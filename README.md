@@ -324,14 +324,19 @@ perform on the similar problems.
 
 [1] N. Friedman, D. Gieger and M. Goldszmidt, "Bayesian Network Classifiers," Machine Learning, vol. 29, pp.
 131-163, 1997.
+
 [2] M. Scutari, "bnlearn - an R package for Bayesian network learning and inference," Creative Commons
 Attribution-Share Alike License, 2009. [Online]. Available: http://www.bnlearn.com/bnrepository/discrete-
 small.html#asia. [Accessed 23 April 2019].
+
 [3] D. j. Spiegelhalter and S. L. Lauritzen, "Local Computations with Probabilities on Graphical Structures and
 Their Application to Expert Systems," Royal Statistical Society, vol. 50, no. 2, pp. 157-194, 1988.
+
 [4] A. M. Carvalho, "Scoring functions for learning Bayesian networks," Inesc-id Tec. Rep, vol. 12, 2009.
+
 [5] D. Geiger, D. Heckerman and C. Meek, "Asymptotic Model Selection for Directed Networks with Hidden," in
 Learning in Graphical Models, Springer, Dordrecht, 1998, pp. 461-477.
+
 [6] J. Yu, A. V. Smith, P. P. Wang, A. J. Hartemink and E. D. Jarvis, "Advances to Bayesian network inference for
 generating causal networks from observational biological data," Bioinformatics, vol. 20, no. 18, pp. 3594-3603,
 2004.
