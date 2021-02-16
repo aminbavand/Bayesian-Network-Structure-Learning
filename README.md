@@ -110,11 +110,122 @@ Genetic algorithm is a metaheuristic search method that tries to find the optimu
 
 In case of our problem, we want to find a Bayesian network structure for Asia dataset which BIC score would be maximum for that structure. The steps in the procedure are as follows:
 
+1. Phenotype genotype mapping:
+
+The first thing we have to do is find a vectorized
+representation of Bayesian network that uniquely maps every structure to a vectorized form.
+Assume we have n variables named X_1, X_2,..., X_n in our network. We can represent the network
+with the set of parents for each variable. If the set of parents for variable X_i are represented by
+Pa(X_i) , then the set of all parent sets for all variables {Pa(X_1),...,Pa(X_n)} would be a unique
+representation of that network [6]. We are able to use this representation and perform operations
+on it.
+
+
+2. Initialization:
+
+We randomly generate a set of populations of the form {Pa(X_1),...,Pa(X_n)}
+considering there should not be any cycle in the graph. One important point in the construction
+of initial population is that how many parent one node should have in average. If we do not have
+any presumption over the average number of parents per node, then some of the constructed
+networks might have very little number of edges in the network and even the network might not
+be connected. I used a Gaussian distribution with mean equal to 1.2 times the number of nodes
+and with variance 0.2 times the number of nodes and use this distribution as the distribution of
+the total number of edges in the network.
+
+
+3. Selection:
+
+We can assign a probability for each individual of the population, which is the
+probability of that individual being chosen for the next generation parent. As we said, this
+probability should be higher for those who have better fitness than the others. In the case of
+Bayesian network in this project, our metric is BIC score and the greater the BIC score, the better
+that structure is for the dataset. So, we can calculate BIC score for all the population and subtract
+the minimum of them from all other scores and then add a small constant value to all of them (so
+there won’t be any zero in the values). Now if we normalized these values so that sum of them
+would be 1, then we have a probability distribution over all individuals in the population and this
+probability is more for those individuals which have better BIC score. Now, we choose some of
+the individuals based on these probability distributions and use them as the parents for the next
+generation to perform mutation and crossover on them.
+
+
+
+4. Mutation: 
+
+Mutation in our problem would be a little change in the network, which can be
+either adding or removing one edge to/from the graph. We have to be careful about producing
+graphs that have cycle, so we have to check after each mutation that if the new graph has cycle in
+it, redo the operation. Note that mutation does not happened to all individuals in population, but
+there should be a constant small probability that determines whether the mutation should happen
+for every individual or not. Also, with 50% probability, the type of mutation is removing an edge
+and with 50% probability, the type is adding an edge. The added edge should be uniformly
+chosen from the available ones.
+
+
+5. Crossover: 
+
+Generally, k point crossover between two parents means that we set k points in
+random places in string and start from the beginning of strings. String have divided into k+1
+substrings. Starting from the first area, we swap this area between two parents. In the next area,
+we do not do anything, but in the one after that and generally in all areas that have even distance
+with first are, we swap the elements of that area between two parents. In the case of our problem,
+we use one point crossover. If we have two networks represent with <img src="https://render.githubusercontent.com/render/math?math={Pa_i(X_1),...,Pa_i(X_n)}"> and <img src="https://render.githubusercontent.com/render/math?math={Pa_j(X_1),...,Pa_j(X_n)}"> after performing crossover with swapping point X_k , the new generated
+networks would be as follows: 
+
+1. <img src="https://render.githubusercontent.com/render/math?math={Pa_i(X_1),...,Pa_i(X_k), Pa_j(X_{k+1}),...,Pa_j(X_n)}">
+
+
+
+2. <img src="https://render.githubusercontent.com/render/math?math={Pa_j(X_1),...,Pa_j(X_k), Pa_i(X_{k+1}),...,Pa_i(X_n)}">
 
 
 
 
 
+Note that the swapping point X_k is chosen randomly between all possible points. After
+performing crossover, we have to check for existence of cycles in the generated graphs.
+We started with an initial population of size 200 and ran the algorithm for 50 iterations. After
+that there were no improvement in the results. After setting the probability of mutation to several
+values, the value of 0.2 seemed to make the algorithm able to find the optimum answers in faster
+time, so we set it to 0.2.
+
+We have explained all the necessary materials that are used in performing genetic algorithm on
+Bayesian networks. Now it is time to jump and see the result of our method to the dataset.
+
+
+## Results
+
+After performing genetic algorithm to find the best structure describing Asia dataset, using BIC
+score, the top three achieved network are shown in Figure 3, Figure 4, and Figure 5.
+
+
+
+<p align="center">
+  <img width="460" height="300" src="/images/3.png">
+</p>
+
+<p align="center">
+  Figure 3: The best achieved structure with BIC score = -26492.4
+</p>
+
+
+
+<p align="center">
+  <img width="460" height="300" src="/images/4.png">
+</p>
+
+<p align="center">
+  Figure 4: The second best achieved structure with BIC score = -26710.9
+</p>
+
+
+
+<p align="center">
+  <img width="460" height="300" src="/images/5.png">
+</p>
+
+<p align="center">
+  Figure 5: The third best achieved structure with BIC score = -27049.9
+</p>
 
 
 
