@@ -18,4 +18,4 @@ the Bayesian network gives us probabilistic connections between the variables. T
 prediction of other variables. As the number of observed variables increases, the prediction of other variables would be more accurate. Figure 1 shows a simple 
 naïve Bayesian network structure. In naïve structures, one of the variables is directly connected to all others. 
 
-[Figure 1: The structure of a naïve Bayes network [1]](/images/1.png)
+[](/images/1.png)
