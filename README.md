@@ -229,6 +229,124 @@ score, the top three achieved network are shown in Figure 3, Figure 4, and Figur
 
 
 
+## Discussion
+
+Now that we saw the results of our work, let us compare them with the knowledge-based
+structure of the Asia dataset. In the original paper that describes Asia dataset, the suggested
+knowledge-based network is the network in Figure 6:
+
+
+<p align="center">
+  <img width="460" height="300" src="/images/6.png">
+</p>
+
+<p align="center">
+  Figure 6: The knowledge-based graph for Asia dataset [3]
+</p>
+
+
+
+
+The BIC score for this network is -27167.2. By comparing this knowledge-based network with
+the networks achieved with our algorithm (Figure 3), we can see that these networks are very
+different from the knowledge based network. However, there are some common parts in these
+networks. For example, in the network of Figure 3 and Figure 4 the connection between smoking
+and bronchitis and also between tuberculosis and either tuberculosis or lung cancer are
+compatible with the knowledge-based network. Also, The connection between either and X-ray
+has been found in all three structures. The connection between bronchitis and dyspnea also has
+been found in the networks of Figure 4 and Figure 5, which exists in the knowledge-based
+structure. But as we can see, there are also lots of nodes that may seem redundant. For example
+in Figure 4, there is one connection between dyspnoea and bronchitis and a connection between
+bronchitis and lung cancer, and also another direct connection between dyspnoea and lung cancer
+which seems unnecessary. There are also some major differences between the structures that we
+found with the knowledge based structure.
+
+
+
+
+
+In terms of the BIC scores for the networks achieved with our algorithm and the BIC score for
+the network of Figure 6, we can see that the BIC score for the achieved networks is better than
+the knowledge-based one, but the difference is not very much considerable in that scale. Also, by
+looking at table 1, we can see that only 4 of the answers in the population have better BIC score
+than the knowledge-based structure which implicate that even though the knowledge-based
+structure does not have the best BIC score, it can be categorized in the range of good answers.
+
+
+After comparing these predicted networks with the knowledge-base one, the question that comes
+to mind is that why did not we achieved the same network as the knowledge-based one. There
+can be two explanation for this. One explanation is that the BIC score is not good enough for
+evaluating the structure of Bayesian network. In other words, BIC score might not be able to fit
+the best structure related to a dataset. As we can explained above, there are a few redundant
+edges in the achieved structure which may be could have been not existed if the penalty term in
+the BIC score had more affect on complexity. On the other hand, BIC score has proved itself in
+so many problems before and there might be another reason for this difference.
+
+
+
+
+The second reason that comes to mind is that may be BIC score has done well and the
+connections that can be inferred from the dataset are the ones that we found with our algorithm.
+However, our medical knowledge tells us something somewhat different than what the data tells
+us. The reason might be the dataset is not large enough to gives the true connection between
+variable. For example if we had 100000 data instances instead of 10000, the results might have been completely different. One other possible explanation is that may be the medical knowledge
+is not completely accurate, because that is just a theory and it is possible that the theory would be
+different that practice.
+
+
+
+
+Now, it is time to evaluate the performance of genetic algorithm. Genetic algorithm only takes a
+fitness function and tries to optimize that as much as it can. In this matter, genetic algorithm
+performed well on our dataset. The fitness function was BIC and genetic algorithm found the
+optimum values of these function on our dataset. Obviously, grid search could not even be
+applied here, because it is not even possible to count the total number of possible structures for
+the network, so it would be impossible to find every structure and evaluate then and then choose
+the one that gives the best structure. We also performed random search and the results were not
+as good as GA. Also since calculating BIC score takes considerable amount of time, random
+search would be very slow for this problem. However, genetic algorithm has the ability of
+constructing the new populations so that most probably, their objective function would be closer
+to optimal values, but random search does the updating without having intuition about the
+direction in which the local or global optima exist.
+
+
+
+
+To conclude, in this project, we performed genetic algorithm to find a good structure to the
+Bayesian network for Asia dataset. We used BIC score to evaluate each structure and reported
+the best three structures found with genetic algorithm. Although the results were somewhat
+different than what was expected in theory, GA performed well on its role, which was founding
+the structure that gives us the minimum BIC score and it seems that it is a good approach to
+perform on the similar problems.
+
+
+## References
+
+[1] N. Friedman, D. Gieger and M. Goldszmidt, "Bayesian Network Classifiers," Machine Learning, vol. 29, pp.
+131-163, 1997.
+[2] M. Scutari, "bnlearn - an R package for Bayesian network learning and inference," Creative Commons
+Attribution-Share Alike License, 2009. [Online]. Available: http://www.bnlearn.com/bnrepository/discrete-
+small.html#asia. [Accessed 23 April 2019].
+[3] D. j. Spiegelhalter and S. L. Lauritzen, "Local Computations with Probabilities on Graphical Structures and
+Their Application to Expert Systems," Royal Statistical Society, vol. 50, no. 2, pp. 157-194, 1988.
+[4] A. M. Carvalho, "Scoring functions for learning Bayesian networks," Inesc-id Tec. Rep, vol. 12, 2009.
+[5] D. Geiger, D. Heckerman and C. Meek, "Asymptotic Model Selection for Directed Networks with Hidden," in
+Learning in Graphical Models, Springer, Dordrecht, 1998, pp. 461-477.
+[6] J. Yu, A. V. Smith, P. P. Wang, A. J. Hartemink and E. D. Jarvis, "Advances to Bayesian network inference for
+generating causal networks from observational biological data," Bioinformatics, vol. 20, no. 18, pp. 3594-3603,
+2004.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
