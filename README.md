@@ -6,7 +6,7 @@ effective approach in problems facing with a large number of possible answers. I
 describes the dataset in the best way. Asia dataset contains some medical information about patients and the goal is finding relation between these information,
 so it would be easier for doctors to predict the existence of some disease in patients. We used BIC score to evaluate the structures using the dataset. Comparing
 the final achieved structures with the one that is achieved with medical knowledge, there were some differences between them, which might be because of improper
-scoring function or improper knowledge-based structure. All in all, genetic algorithm succeeded in optimizing the fitness function in a reasonable time.
+scoring function or improper knowledge-based structure.
 
 ## Introduction
 The problem of classification is one of the most important topics in the current world. There are hundreds of machine learning approaches that are applied to 
